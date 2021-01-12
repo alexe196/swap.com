@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">@lang('dashboardrtl')</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -150,6 +150,15 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+
+                    <div class="categories">
+                        @foreach ($categories as $categori)
+                            <div class="categories-block">
+                                <img src="">
+                                <a href="{{$categori->name}}" >{{$categori->name}}</a>
+                            </div>
+                        @endforeach
                     </div>
 
                 </div>

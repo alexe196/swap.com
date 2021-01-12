@@ -81,6 +81,7 @@ return [
     */
 
     'locale' => 'en',
+    'locales' => ['en', 'rtl'],
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        \App\Servicec\Localization\LocalizationServiceProvider::class,
 
     ],
 
@@ -227,6 +229,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'LocalizationServiceProvider' => App\Servicec\Localization\LocalizationServiceProvider::class,
 
     ],
 

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Middleware;
+use App\Servicec\Localization\Localization;
+use App\Servicec\Localization\LocalizationSevice;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(
+    [
+        "prefix" => Localization::locale(),
+        'middleware' => 'setLocale'
+    ],
+    function (){
+        Route::get('/', function () {
+            return view('welcome');
+        });
 
-Auth::routes();
+        Auth::routes();
 
-Route::get('/catalog', 'CatalogController@index')->name('catalog');
+        Route::get('/catalog', 'CatalogController@index')->name('catalog');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/may-information', 'HomeController@myInformation')->name('myinformation');
+        Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/may-information', 'HomeController@myInformation')->name('myinformation');
+
+    }
+);
 
 
 Route::group(['middleware' => ['role:admin']], function () {

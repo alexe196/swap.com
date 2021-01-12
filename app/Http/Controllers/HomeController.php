@@ -26,8 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $categories = DB::table('categories')->where('parent_id', 0)->get();
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
-        return view('home', ['user' => $user]);
+        return view('home', ['user' => $user, 'categories' => $categories]);
     }
 
     public function myInformation()
