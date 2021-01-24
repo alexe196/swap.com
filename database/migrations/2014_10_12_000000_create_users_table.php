@@ -26,9 +26,9 @@ class CreateUsersTable extends Migration
             $table->string("address")->nullable();
             $table->string("zipcode")->nullable();
             $table->string("sex");
-            $table->boolean("show");
+            $table->boolean("activiti");
             $table->boolean('moderation_activiti');
-            $table->string("avatar");
+            $table->string("avatar", 500);
             $table->rememberToken();
             $table->timestamps();
         });
