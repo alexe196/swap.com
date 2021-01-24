@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">@lang('dashboardrtl')</div>
+                <div class="card-header">@lang('Dashboard')</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,7 +15,7 @@
                     @endif
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="/edit">
                             @csrf
 
                             <div class="form-group row">
@@ -131,7 +131,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -142,6 +142,45 @@
                             </div>
 
 
+                            <div class="categories">
+                                @foreach ($categories as $categori)
+                                    <div class="categories-block">
+                                        <img src="">
+                                        <a href="{{$categori->name_langue}}" >{{$categori->name_langue}}</a>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <br><br>
+
+                            <div class="form-group row">
+                                <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+
+                                <div class="col-md-6">
+                                    <select name="category_name" class="form-control @error('categories') is-invalid @enderror" >
+                                        @foreach ($categories as $categori)
+                                            <option value="{{$categori->id}}"> {{$categori->name_langue}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                Ad your own tags or you can mark
+                                <br>
+                                multiple tags in the list below
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Tags') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="tags" type="text" class="form-control @error('tags') is-invalid @enderror" name="tags_name">
+                                </div>
+                            </div>
+
+
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -150,15 +189,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-
-                    <div class="categories">
-                        @foreach ($categories as $categori)
-                            <div class="categories-block">
-                                <img src="">
-                                <a href="{{$categori->name}}" >{{$categori->name}}</a>
-                            </div>
-                        @endforeach
                     </div>
 
                 </div>

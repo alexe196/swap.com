@@ -30,6 +30,7 @@ Route::group(
 
         Route::get('/catalog', 'CatalogController@index')->name('catalog');
 
+        Route::post('/edit', 'HomeController@edit');
         Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/may-information', 'HomeController@myInformation')->name('myinformation');
 
